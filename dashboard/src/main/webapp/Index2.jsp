@@ -89,6 +89,11 @@ $(document).ready(function(){
 		})	  
 
 	
+		
+		
+		
+			    $('.modal-trigger').leanModal();
+			  
 			
 			
 })
@@ -116,19 +121,42 @@ $(document).ready(function(){
     
     
      <a class="waves-effect waves-red btn-flat" id="tosignup" style="color:teal">Register</a>
+   <a href="#modal1" class="btn-floating btn-large red waves-effect waves-light btn modal-trigger">Login</a>
    
-<a id="showpage" class="btn-floating btn-large red">Login</a>
- 
-  </div>
+<!-- <a id="showpage" href="#modal1" class="btn-floating btn-large red waves-effect waves-light btn modal-trigger">Login</a> -->
+           
+          
+</div>
   
-  <header>
-  <nav>
-    <div>
+  
+ <!-- Modal Trigger -->
+ <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content" style="background:#272125;text-align: center;">  
+      <iframe src="LoginForm.html" width="700" height="400" target="_top" style="border:none"></iframe>
+    </div>
+    
+    
+  </div>  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+   <header>
+  <nav >
+    <div style="background: OrangeRed">
         <h5 class="brand-logo" >Welcome Abode</h5>
     </div>
   </nav>
-</header>
-  <div class="parallax-container" style="overflow: hidden;">
+</header> 
+  <div class="parallax-container" style="overflow: hidden;height:500px">
     <div class="parallax">
    <!--  <video style="width:100%" autoplay loop muted> 
     <source src="5033150.mp4" type="video/mp4">

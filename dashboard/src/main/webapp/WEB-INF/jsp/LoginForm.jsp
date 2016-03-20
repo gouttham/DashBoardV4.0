@@ -139,10 +139,11 @@ function evalid(email)
 
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	
-<f:form action="LoginForm.html" modelAttribute="index">
+<f:form action="LoginForm.html" modelAttribute="index" target="_top">
   <h2><span class="entypo-login"></span> Login</h2>
   
   <button type="submit" value="Login" class="submit"><span class="entypo-lock"></span></button>
+
   
   <span class="entypo-user inputUserIcon"></span>
   <f:input path="pId" type="text" class="user" placeholder="ursername" onclick="evalid(this.value)"/>
@@ -153,7 +154,7 @@ function evalid(email)
   <div class="col-md-12 control">
   <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
   <p style="color:#CFCECF" align="center">Don't have an account!
-  <a href="RegistrationForm.html" >
+  <a href="r2.html" >
   Sign Up Here
   </a></p>
   </div>
