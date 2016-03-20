@@ -22,20 +22,7 @@
 <html>
 <head>
 <style type="text/css">
-body
-{
-padding-left: 20px;
-background: grey;
-opacity:0.6;
-}
-h4
-{
-font: 600;
-}
-tr
-{
-opacity:2;
-}
+
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -48,33 +35,36 @@ opacity:2;
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
+
+
+  
+
+
+  
 </head>
 <body>
+
 <h1>Fill In Your Details</h1>
 	<form:form action="RegistrationForm.html" 
 		modelAttribute="RegistrationFormmodel" method="post">
 		<table align="center" class="table">
 			<tr>
-				<td><h4>Name:</h4></td>
-				<td><form:input path="name"></form:input></td>
+				<td><form:input path="name" placeholder="NAME"></form:input></td>
 				<td><form:errors path="name"></form:errors></td>
 			</tr>
 
 			<tr>
-				<td><h4>Employee-ID:</h4></td>
-				<td><form:input path="pId.pId" /></td>
+				<td><form:input path="pId.pId" placeholder="EMPLOYEE-ID"/></td>
 				<td><form:errors path="pId.pId" /></td>
 			</tr>
 
 			<tr>
-				<td><h4>Password:</h4></td>
-				<td><form:input type="password" path="pId.password"></form:input></td>
+				<td><form:input type="password" path="pId.password" placeholder="PASSWORD"></form:input></td>
 				<td><form:errors path="pId.password"></form:errors></td>
 			</tr>
 
 			<tr>
-				<td><h4>Email-ID:</h4></td>
-				<td><form:input path="emailId" /></td>
+				<td><form:input path="emailId" placeholder="EMAIL-ID"/></td>
 				<td><form:errors path="emailId" /></td>
 			</tr>
 
@@ -84,7 +74,6 @@ opacity:2;
 
 			</tr> -->
 			<tr>
-				<td><h4>Profile Type:</h4></td>
 				<td><form:select path="pId.type">
 					<form:option value="s">Student</form:option>
 					<form:option value="t">Trainer</form:option>
@@ -94,23 +83,19 @@ opacity:2;
 				<td><form:errors path="pId.type"></form:errors></td>
 			</tr>
 			<tr>
-				<td><h4>Vertical:</h4></td>
-				<td><form:input path="vertical"></form:input></td>
+				<td><form:input path="vertical" placeholder="VERTICAL"></form:input></td>
 				<td><form:errors path="vertical"></form:errors></td>
 			</tr>
 			<tr>
-				<td><h4>Location:</h4></td>
-				<td><form:input path="location"></form:input></td>
+				<td><form:input path="location" placeholder="LOCATION"></form:input></td>
 				<td><form:errors path="location"></form:errors></td>
 			</tr>
 			<tr>
-				<td><h4>ManagerId:</h4></td>
-				<td><form:input path="managerId"></form:input></td>
+				<td><form:input path="managerId" placeholder="MANAGER-ID"></form:input></td>
 				<td><form:errors path="managerId"></form:errors></td>
 			</tr>
 			<tr>
-				<td><h4>PhoneNo:</h4></td>
-				<td><form:input path="phoneNo"></form:input></td>
+				<td><form:input path="phoneNo" placeholder="PHONE-NO"></form:input></td>
 				<td><form:errors path="phoneNo"></form:errors></td>
 			</tr>
 			
@@ -135,6 +120,11 @@ opacity:2;
 		</table>
 		
 	</form:form>
-
+<script type="text/javascript">
+$(document).ready(function() {
+    $('form:select').material_select();
+  });
+            
+</script>
 </body>
 </html>

@@ -154,5 +154,45 @@ public class MainController {
 		
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	/////////////////////////////////////////////
+	
+	@RequestMapping(value = "/r2", method = RequestMethod.GET)
+	public String setr2(Model model) {
+		com.dashboard.beans.ProfileBean registrationBean = new com.dashboard.beans.ProfileBean();
+		model.addAttribute("RegistrationFormmodel", registrationBean);
+		return "r2";
+	}
+
+	@RequestMapping(value = "/r2", method = RequestMethod.POST)
+	public String addr2(@ModelAttribute("RegistrationFormmodel") @Valid ProfileBean pb, BindingResult bindingResult,
+			HttpSession httpSession) throws IOException {
+		//System.out.println(pb.getF().getOriginalFilename());
+		if (bindingResult.hasErrors()) {
+
+			FieldError error = bindingResult.getFieldError();
+			System.out.println(error.getField());
+			
+			System.out.println("HAs Errors");
+			return "r2";
+		}
+		String stat = user.register(pb);
+		httpSession.setAttribute("reg_id", pb.getpId());
+		if (stat.equalsIgnoreCase("Success")) {
+			return "RegistrationSuccess";
+		} else {
+			return "Failure";
+		}	
+	}
+	
+	
+	
+	
 
 }
