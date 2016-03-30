@@ -77,7 +77,7 @@
 <table class="table table-stripped table-hover" id="bootstrap-table">
 <thead>
 <tr>
-<th><h4>Name</h4></th><th><h4>Id</h4></th><th><h4>Type</h4></th><th><h4>Authorized/Not-Authorized</h4></th><th><h4>Status</h4></th>
+<th><h5>Name</h5></th><th><h5>Id</h5></th><th><h5>Type</h5></th><th><h5>Authorized/Not-Authorized</h5></th><th><h5>Status</h5></th>
 </tr>
 </thead>
 <%
@@ -89,6 +89,7 @@ while(rs.next())
 {	
 	PreparedStatement pre1=conn.prepareStatement("select * from newdb.db_profile where pId =?");
 	pre1.setString(1, rs.getString("pId"));
+	System.out.println(rs.getString("pId"));
 	ResultSet rs2=pre1.executeQuery();
 	rs2.next();
 	if(rs.getInt("status")==9999)

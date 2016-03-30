@@ -23,18 +23,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="box clearfix">
-				<h3>Bootstrap Data Table</h3>
-				<p>Easily turn your tables into datatables.</p>
+				<h3>Trainers</h3>
+				<p>Schedule Interviews for the trainers</p>
 				<form action="" method="post">
 					<table class="table table-hover" id="bootstrap-table">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Employee ID</th>
-								<th>Email Id</th>
-								<th>Skills</th>
-								<th>Skill Points</th>
-								<th>schedule Interview</th>
+								<th><h5>Name</h5></th>
+								<th><h5>Employee ID</h5></th>
+								<th><h5>Email Id</h5></th>
+								<th><h5>Skills</h5></th>
+								<th><h5>Skill Points</h5></th>
+								<th><h5>schedule Interview</h5></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -52,7 +52,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<input class="btn btn-danger btn-block" type="submit">
+					<input class="btn btn-danger btn-block" type="submit" value="Schedule Interview">
 				</form>
 			</div>
 		</div>

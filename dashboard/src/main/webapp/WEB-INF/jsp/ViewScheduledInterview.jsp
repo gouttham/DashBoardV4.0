@@ -30,11 +30,11 @@
 					<table class="table table-hover table-striped" id="bootstrap-table">
 						<thead>
 							<tr>
-								<th>Interview ID</th>
-								<th>Date and Time</th>
-								<th>Interviewers</th>
-								<th>Interviewees</th>
-								<th>CheckBox</th>
+								<th><h5>Interview ID</h5></th>
+								<th><h5>Date and Time</h5></th>
+								<th><h5>Interviewers</h5></th>
+								<th><h5>Interviewees</h5></th>
+								<th><h5>CheckBox</h5></th>
 							</tr>
 						</thead>
 						<tbody>

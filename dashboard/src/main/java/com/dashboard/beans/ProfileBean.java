@@ -35,7 +35,7 @@ public class ProfileBean {
 	private String vertical;
 	private String emailId;
 	private String phoneNo;
-	@Lob
+	
 	private byte[] photo;
 
 

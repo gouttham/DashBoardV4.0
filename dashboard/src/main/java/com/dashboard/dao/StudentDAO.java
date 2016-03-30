@@ -36,4 +36,6 @@ public interface StudentDAO
 
 	public ArrayList<AnnouncementBean> readAnnouncementsSearch(String studentId,String subject);
 	public ArrayList<AnnouncementBean> viewAnnouncementsSearch(String studentId,String subject);
+
+	public void addLike(AskBean askbean);
 }

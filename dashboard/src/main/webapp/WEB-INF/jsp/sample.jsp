@@ -35,37 +35,7 @@
 	    background-color: transparent;
 	    text-decoration: none;
 	}
-	/* #a2:link {
-	    color: #9C6B98;
-	    background-color: transparent;
-	    text-decoration: none;
-	}
-	 */
-	/* a:visited {
-	    color: #9C6B98;
-	    background-color: transparent;
-	    text-decoration: none;
-	}
-	a:hover {
-	    color: #9C6B98;
-	    background-color: transparent;
-	    text-decoration: none;
-	}
-	a:active {
-	    color: #F0A804;
-	    background-color: transparent;
-	    text-decoration: none;
-	}
-	 */
 	
-	 
-	/* #header{
-		
-		margin-left:10px;
-		
-		/* color:#96CDCD; */
-		
-	}
 	
 	#blank{
 		background-color:#eeeeee;
@@ -135,12 +105,12 @@
 			
 			
 			
-			<li class="nav navbar-nav navbar-right"><input type="text" id="search">
+			<!-- <li class="nav navbar-nav navbar-right"><input type="text" id="search">
 			
 			<button type="button" class="btn btn-danger navbar-btn" onclick="doAjaxSearch();"> <span class="glyphicon glyphicon-search"></span> Search
  		    </button>
 				
-			</li>
+			</li> -->
 			
 	</ul>
 </div>

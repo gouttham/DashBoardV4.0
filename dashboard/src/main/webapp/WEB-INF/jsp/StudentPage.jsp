@@ -70,7 +70,11 @@ background-image: url(img/3.jpg);
 color:#CDCDCD;
 
 }
+
+
 </style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
 
@@ -82,7 +86,11 @@ rs1.next();
 
 %>
 	
-<div id="margin" class="jumbotron" style="text-align: center;padding-top: 0.5%;padding-bottom: 0.5%"><span class="h3 text-capitalize">Welcome&nbsp&nbsp<%=rs1.getString("name") %></span></div>
+<div id="margin" class="jumbotron" style="text-align: center;padding-top: 0.5%;padding-bottom: 0.5%"><span class="h3 text-capitalize">Welcome&nbsp&nbsp<%=rs1.getString("name") %></span>
+<div style="margin-left: 95%;margin-top: -25px">                 
+<a href="Logout.html"><i class="large material-icons">input</i></a>
+</div>
+</div>
   <div id="wrapper">
 
         <!-- Sidebar -->
@@ -93,6 +101,9 @@ rs1.next();
                        <!--Student  -->
                        Student Id: <%=session.getAttribute("pId") %>
                     </a>
+                </li>
+                 <li>
+<a href="#" onclick="func('viewStudent.html')">My Profile</a>
                 </li>
                 <li>
 <a href="#" onclick="func('SkillSelect.html')">Select Skills</a>
@@ -109,19 +120,19 @@ rs1.next();
                  <li>
 <a href="#" onclick="func('viewannouncements.html')">Announcements</a>
                 </li>
-                <li>
+                <li style="display: none;">
 <a href="Logout.html">Click Here to logout</a>
                 </li>
-                <li class="text-center">
+                 <li class="text-center">
                 <br/>
-<a><img class="img-circle" src="pic.html?a=<%=session.getAttribute("pId") %>" /></a>              
-                </li>
+<a><img class="img-circle" style="width: 60px;height: 60px" src="pic.html?a=<%=session.getAttribute("pId") %>" /></a>              
+                </li> 
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span id="left" class='glyphicon glyphicon-chevron-left'></span></a>
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span id="left" style="color: OrangeRed" class='glyphicon glyphicon-chevron-left'></span></a>
         <script type="text/javascript">
         function func(pg)
         {

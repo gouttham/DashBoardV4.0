@@ -51,7 +51,7 @@ $(document).ready(function() {
 <body>
 
 	<form:form action="RegistrationForm.html" 
-		modelAttribute="RegistrationFormmodel" method="post">
+		modelAttribute="RegistrationFormmodel" method="post" enctype="multipart/form-data">
 			
 			
 			<div class="row">
@@ -145,8 +145,16 @@ $(document).ready(function() {
 			
 			</div>
 			</div>
+		
+			<div class="row">
+        	<div class="input-field col s12 ">
 			
+				<input type="file"  name="filename"></input>
+				
 			
+			</div>
+			</div> 
+				
 			
 			
 			<%-- <tr>

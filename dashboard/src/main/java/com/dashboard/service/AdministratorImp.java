@@ -2,7 +2,9 @@ package com.dashboard.service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dashboard.beans.CredentialBean;
 import com.dashboard.beans.InterviewBean;
 import com.dashboard.beans.IntervieweeBean;
 import com.dashboard.beans.InterviewerBean;
@@ -28,6 +31,60 @@ public class AdministratorImp implements Administrator {
 	@Autowired
 	Trainer trainerService;
 
+@Transactional(propagation=Propagation.REQUIRED,readOnly=false)
+	
+	public String addTrainer(CredentialBean credentialbean) {
+		if(credentialbean == null)
+			return "ERROR";
+		else
+			return(adminDAO.addTrainer(credentialbean));
+	}
+	
+	
+	
+	public List<ProfileBean> viewTrainer() {
+		// TODO Auto-generated method stub
+		ArrayList<ProfileBean> arrlist = adminDAO.viewTrainer();
+		if(arrlist == null)
+			return null;
+		else if
+		(arrlist.isEmpty()){
+			return null;
+		}
+		else
+		return arrlist;
+	}
+
+
+
+	public boolean modifyTrainer(ProfileBean profilebean) {
+		// TODO Auto-generated method stub
+		return adminDAO.modifyTrainer(profilebean);
+		//return false;
+	}
+
+
+
+	public CredentialBean getCredentialBean(String pid) {
+		// TODO Auto-generated method stub
+	
+		return adminDAO.getCredentialBean(pid);
+		
+	}
+
+
+	
+	public int removeTrainer(ArrayList<Integer> trainerIdarr) {
+		// TODO Auto-generated method stub
+		return adminDAO.removeTrainer(trainerIdarr);
+		//return 0;
+	}
+	
+	public List<ProfileBean> viewStudent(){
+		return adminDAO.viewStudent();
+	}
+
+	
 	public Map<ProfileBean, ArrayList<StudentSkillBean>> viewAllStudents() {
 
 		return adminDAO.viewAllStudents();
@@ -82,5 +139,39 @@ public class AdministratorImp implements Administrator {
 		// TODO Auto-generated method stub
 		return adminDAO.viewSkills();
 	}
+	
+	////////Manual Integration
+	
+	@Transactional(propagation=Propagation.SUPPORTS,readOnly=false)
+	public ArrayList<SkillBean> displaySkillList(){
+		
+		ArrayList<SkillBean> ssb=adminDAO.displaySkill();
+		
+		if(ssb.equals(null)||ssb.isEmpty())
+			return null;
+		else
+		 return ssb;
+		
+		
+	}
+	@Transactional(propagation=Propagation.SUPPORTS,readOnly=true)
+	public TreeMap<String, Integer> getStudentList(String skills) {
+		TreeMap<String, Integer> studList=adminDAO.getStudentList(skills);
+		
+		if(studList.size()!=0)
+		return studList;
+		else
+		{
+			studList.put("Empty", 0);
+			return studList;
+		}
+	}
+
+	public ArrayList<String> getPidList(String[] arr) {
+		ArrayList<String> al=adminDAO.getPidList(arr);
+		return al;
+	}
+	
+	
 
 }

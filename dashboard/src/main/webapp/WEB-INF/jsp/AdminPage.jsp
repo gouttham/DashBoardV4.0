@@ -23,6 +23,14 @@
     <!-- Custom CSS -->
     <link href="Dcss/simple-sidebar.css" rel="stylesheet">
 <title>Admin</title>
+
+
+
+
+   
+  
+  
+  
 <style type="text/css">
 .jumbotron
 {
@@ -33,6 +41,7 @@ color:#CDCDCD;
 
 }
 </style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <% Connection conn1 = DBUtill.getDBConnection();
@@ -42,14 +51,15 @@ rs1.next();
 
 
 %>
-<!-- <a href="ViewStudents.html">View Students</a><br>
-<a href="ViewTrainers.html">View Trainers</a><br>
-<a href="ViewScheduledInterview.html">View Scheduled Interview</a><br>
-<a href="authorizeaccess.html">Authorize Access</a><br>
-<a href="Logout.html">Click Here to logout</a> -->
 
 
-<div id="margin" class="jumbotron" style="text-align: center;padding-top: 0.5%;padding-bottom: 0.5%"><span class="h3 text-capitalize">Welcome&nbsp&nbsp<%=rs1.getString("name") %></span></div>
+
+<div id="margin" class="jumbotron" style="text-align: center;padding-top: 0.5%;padding-bottom: 0.5%">
+<span class="h3 text-capitalize">Welcome&nbsp&nbsp<%=rs1.getString("name") %></span>
+<div style="margin-left: 95%;margin-top: -25px">                 
+<a href="Logout.html"><i class="large material-icons">input</i></a>
+</div>
+</div>
   <div id="wrapper">
 
         <!-- Sidebar -->
@@ -59,6 +69,9 @@ rs1.next();
                     <a href="#">
                         Admin Id:&nbsp<%=session.getAttribute("pId") %>
                     </a>
+                </li>
+                 <li>
+<a href="#" onclick="func('viewStudent.html')">My Profile</a>
                 </li>
                 <li>
 <a href="#" onclick="func('ViewStudents.html')">View Students</a>
@@ -70,24 +83,29 @@ rs1.next();
 <a href="#" onclick="func('ViewScheduledInterview.html')">View Scheduled Interview</a>
                 </li>
                 <li>
-<a href="#" onclick="func('authorizeaccess.html')">Authorize Access</a>
+<a href="#" onclick="func('authorizeaccess.html')">Authorize-Access</a>
                 </li>
                  <li>
-<a href="#" onclick="func('addskill.html')">Add Skills</a>
+<a href="#" onclick="func('addskill.html')">Skills</a>
                 </li>
-                <li>
-<a href="Logout.html" style="display:none">Click Here to logout</a>
+               <li>
+<a href="#" onclick="func('searchSkill.html')">Search Skills</a>
                 </li>
-                <li class="text-center">
+                
+                
+                <li style="display: none">
+<a href="Logout.html">Click Here to logout</a>
+                </li>
+                      <li class="text-center">
                 <br/>
-<a><img class="img-circle" src="pic.html?a=<%=session.getAttribute("pId") %>" /></a>              
-                </li>
+<a><img class="img-circle" style="width: 60px;height: 60px" src="pic.html?a=<%=session.getAttribute("pId") %>" /></a>              
+                </li> 
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span id="left" class='glyphicon glyphicon-chevron-left'></span></a>
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle" style="color:OrangeRed"><span id="left" class='glyphicon glyphicon-chevron-left'></span></a>
         <script type="text/javascript">
         function func(pg)
         {

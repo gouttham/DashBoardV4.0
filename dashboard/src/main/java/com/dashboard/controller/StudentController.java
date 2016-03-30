@@ -69,10 +69,25 @@ if(studentService.addEvent(tb,pagenumber)==null)
 model.addAttribute("jsonobject",studentService.addEvent(tb,pagenumber) );
 return "hu";
 }
+//tostorelike
+@RequestMapping(value="/tostorelike",method=RequestMethod.GET)  
 
+public  @ResponseBody String tostorelikes(@RequestParam(value ="id") int id,@RequestParam(value ="val") int val,HttpSession session)
+
+{
+	AskBean ask = new AskBean();
+	String s = (String) session.getAttribute("pId");
+	ask.setStudentId(s);
+	ask.setNoOfLike(val);
+	ask.setPostId(id);
+	studentService.addLike(ask);
+	
+	return null;
+	
+}
 @RequestMapping(value="/tostorepost",method=RequestMethod.GET)  
 
-public  @ResponseBody String toaddpostqwert(@RequestParam(value ="description") String description,HttpSession session) 
+public  @ResponseBody String tostorepostAsk(@RequestParam(value ="description") String description,HttpSession session) 
 {
 System.out.println("im in controller");
 AskBean a = new AskBean();
@@ -87,7 +102,7 @@ a.setStudentId((String) session.getAttribute("pId"));
 AskBean ask = 	studentService.addPost(a);
 System.out.println("i m in post Controller ");
 System.out.println(ask.getName()+","+ask.getDescription()+","+ask.getDateCreated()+","+ask.getPostId());
-return ask.getName()+","+ask.getDescription()+","+ask.getDateCreated()+","+ask.getPostId();
+return ask.getPostId()+"";
 }
 
 
@@ -118,7 +133,7 @@ else
 }
 
 System.out.println(ask.getName()+","+ask.getDescription()+","+ask.getDateCreated()+","+Integer.parseInt(posttosend));
-return ask.getName()+","+ask.getDescription()+","+ask.getDateCreated()+","+Integer.parseInt(posttosend);
+return ask.getPostId()+"";
 }
 
 

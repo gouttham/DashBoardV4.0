@@ -2,6 +2,7 @@ package com.dashboard.beans;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,10 +13,23 @@ public class AskBean {
 	
 	@Id
 	private int postId;
+	
+	
+	private int noOfLike;
+	
 	private String name;
 	private String description;
 	private String studentId;
 	private Date dateCreated = new Date();
+
+	
+	
+	public int getNoOfLike() {
+		return noOfLike;
+	}
+	public void setNoOfLike(int noOfLike) {
+		this.noOfLike = noOfLike;
+	}
 	public int getPostId() {
 		return postId;
 	}

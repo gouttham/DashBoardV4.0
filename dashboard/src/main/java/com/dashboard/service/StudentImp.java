@@ -31,8 +31,11 @@ public class StudentImp implements Student {
 	public ArrayList<AnnouncementBean> viewAnnouncements() {
 		return studentDAO.viewAnnouncements();
 	}
-
-
+	@Transactional(propagation=Propagation.REQUIRED,readOnly=false)
+	public void addLike(AskBean askbean)
+	{
+		studentDAO.addLike(askbean);
+	}
 	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 	public AnnouncementBean getAnnouncementBean(int anmtId) {
 		// TODO Auto-generated method stub

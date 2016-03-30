@@ -169,7 +169,7 @@ $(document).ready(function(){
     
     
     
-    <div class="section white">
+    <!-- <div class="section white">
     <div class="row container">
       <h2 class="header">Dashboard</h2>
       <p class="grey-text text-darken-3 lighten-3">An initiative by the  Account where Professionals can take a step towards upgrading Their Knowledge</p>
@@ -191,6 +191,50 @@ $(document).ready(function(){
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
       </code></pre>
     </div>
+  </div> -->
+  <br/><br/> <br/><br/>
+    <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons"><img src="iconmonstr-speech-bubble-14-icon-256-1.png" width="107" height="88" /></i></h2>
+            <h5 class="center">Share & Connect </h5>
+
+            <p class="light" style="text-align:center;">Sign In & Update your profile.
+Know trainees and peers accomplish with them to be measurable. Know about things happening in academy.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons"><img src="icon-lg-220.png"  width="107" height="88" /></i></h2>
+            <h5 class="center">Access Anywhere</h5>
+
+            <p class="light" style="text-align:center;">It is  portable – Dashboard web application runs anywhere. Deploy standalone, in an app server, on a Cloud or all of the above. </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons"><img src="505335950.jpg" width="107" height="88" /></i></h2>
+            <h5 class="center">Objective</h5>
+
+            <p class="light" style="text-align:center;">  An initiative by the Account 
+where professionals can take a 
+step towards improving their knowledge.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+
+    <div class="section">
+
+    </div>
   </div>
     
     
@@ -208,9 +252,9 @@ $(document).ready(function(){
     
     
       
-    <div class="section white">
-    <div class="row container">
-      <h2 class="header">Parallax</h2>
+     <div class="section white">
+  
+  <!--     <h2 class="header">Parallax</h2>
       <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
     </div>
     <div class="row container">
@@ -228,10 +272,23 @@ $(document).ready(function(){
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>parallax-container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>parallax<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>images/parallax2.jpg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-      </code></pre>
+      </code></pre> -->
+      
+
+
+  <div class="row container">
+  <h4>Apple Academy</h4>
+The Apple Academy program provides unique benefits to people. The AATCE program provides the opportunity for improving their knowledge, and also provide the additional benefit of Apple Certification.
+<h5>Apple Certification Ignites Careers</h5>
+
+Apple Certification can jump start rookie futures and distinguish them as a professional-level user of Apple's professional applications. Participation in the program allows you to offer high quality training on the same professional software used every day in current television shows, films and recording studios.
+AATCE Program Overview
+
+Courses are delivered by Apple Certified Trainers who maintain Apple's highest quality standards. An AATCE incorporates Apple's curriculum into their existing, accredited curriculum and administers certification only to their enrolled students and faculty, which is considered "academic delivery." AATCEs do not deliver training or certification exams to the general public, even as part of enrichment or extension programs - that is considered "commercial delivery." Some higher education facilities may be authorized as commercial AATCs, which means they can deliver both academic and commercial courses. Acceptance as an AATCE does not guarantee acceptance into the AATC program.
+
+    
     </div>
-  </div>
-  
+  </div> 
   
   
     <div id="signup" class="parallax-container" style="overflow: hidden;height:750px;">

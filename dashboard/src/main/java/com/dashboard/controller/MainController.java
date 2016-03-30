@@ -73,6 +73,7 @@ public class MainController {
 				authentication1.changeLoginStatus(CredentialBean, 1);
 				System.out.println("admin");
 				return "AdminPage";
+				//return "adpg";
 
 			} else if (authentication1.authorize(u).equalsIgnoreCase("t")) {
 				// sessionFactory.getCurrentSession().save(CredentialBean);
@@ -114,7 +115,7 @@ public class MainController {
 
 	@RequestMapping(value = "/RegistrationForm", method = RequestMethod.POST)
 	public String addValues(@ModelAttribute("RegistrationFormmodel") @Valid ProfileBean pb, BindingResult bindingResult,
-			HttpSession httpSession) throws IOException {
+			@RequestParam("filename") MultipartFile fileTo,HttpSession httpSession) throws IOException {
 		//System.out.println(pb.getF().getOriginalFilename());
 		if (bindingResult.hasErrors()) {
 
@@ -125,25 +126,10 @@ public class MainController {
 			return "RegistrationForm";
 		}
 		
+		pb.setPhoto(fileTo.getBytes());
 		
-		/*
-		System.out.println(pb.getF().getName());
-		try {
-			byte[] b=pb.getF().getBytes();
-			
-			pb.setPhoto(b);
-		
-			
-	
-		pb.setPhoto(b);
-		
-		
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "Failure";
-		
-		}*/
 		String stat = user.register(pb);
+	
 		httpSession.setAttribute("reg_id", pb.getpId());
 		if (stat.equalsIgnoreCase("Success")) {
 			return "RegistrationSuccess";
@@ -172,7 +158,7 @@ public class MainController {
 
 	@RequestMapping(value = "/r2", method = RequestMethod.POST)
 	public String addr2(@ModelAttribute("RegistrationFormmodel") @Valid ProfileBean pb, BindingResult bindingResult,
-			HttpSession httpSession) throws IOException {
+			@RequestParam("filename") MultipartFile fileTo,	HttpSession httpSession) throws IOException {
 		//System.out.println(pb.getF().getOriginalFilename());
 		if (bindingResult.hasErrors()) {
 
@@ -182,6 +168,7 @@ public class MainController {
 			System.out.println("HAs Errors");
 			return "r2";
 		}
+		pb.setPhoto(fileTo.getBytes());
 		String stat = user.register(pb);
 		httpSession.setAttribute("reg_id", pb.getpId());
 		if (stat.equalsIgnoreCase("Success")) {

@@ -85,7 +85,7 @@
 	<div>
 		
 		Enter the skill to add:<input id="name"></input>
-		<input type="submit" class="btn btn-danger btn-sm" onclick="add();">
+		<input type="submit" class="btn btn-danger btn-sm" onclick="add();" value="Add Skill">
 		
 	</div>	
 	<hr>
@@ -123,7 +123,7 @@
 			</c:forEach>	
 		</table>	
 		<%}else{%>
-		Skills are not present....
+		<h2>No Skills Found...</h2>
 		<%} %>
 	</div>
 

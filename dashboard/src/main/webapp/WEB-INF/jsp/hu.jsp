@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,7 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" class="btn btn-info" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
  
@@ -29,40 +30,60 @@ div{
 margin-top:30px;margin-bottom:30px;
 
 }
-h5,a,h3{
+img{
+float:right;
+
+width:60px;
+height:60px;
+}
+
+
+a,h3,h5{
 font-family: "Droid Sans";
-  font-style: normal;
+
 color:#D9534F;
 font-weight: bold !important;
 
 }
+a{font-size:18px;}
 span
 {
 margin-top:20px;
 font-family: "Droid Sans";
   font-style: normal;
-color:blue;
+color:#D9534F;
 font-weight: bold !important;
 font-size:15px;
 
 }
+div.divClass
+{
+border:1px solid #d6d4d7;
+padding-left:40px;
 
+}
 textarea {
 	color: #555;
 	line-height: 1.5625;
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
+	rows:5;
+	width:100%;
 }
 .avatar,
-.featuredpage img,
-.featuredpost img,
 .post-image {
 	background-color: #f5f5f5;
 	border: 1px solid #ddd;
-	padding: 5px;
+	padding:5px;
+	
 }
+.disabled123
+{
+color:transparent;
+display:none;
 
+}
 
 </style>
 
@@ -70,19 +91,34 @@ textarea {
 
 
 
-<script>var req;var url;
+<script>var req;var url;var responseTo;var reqObId;
+
+function myLike(id,val){
+	
+	req=new XMLHttpRequest();
+	url="tostorelike.html?id="+id+"&val="+val;
+	
+	req.onreadystatechange= getResponse1;//This implies that whenever state changes, getResponse is called.
+	req.open("GET", url, true);	//Here it is calling the servlet, so this will change the state and hence call getResponse.
+
+	req.send(null);
+}
+function getResponse1()
+{
+	
+	}
 function myFunction(data,data1,desc){
-//alert("im here in adding....");
+
 
 req=new XMLHttpRequest();
-if(data1>1)
+if(data1>2)
 	{
-//	alert("wat happened");
+	
 	 url="tostorepost.html?description="+desc;
 	}
 else
 	{
-//	alert("right track"); 
+	
 url="tostorecomment.html?posttosend="+data+"&description="+desc+"&type="+data1;
 	}
 
@@ -95,39 +131,134 @@ req.onreadystatechange= getResponse;//This implies that whenever state changes, 
 
 
 function getResponse(){
-//alert("sahvdhsbjvdh");
+
 	if (req.readyState==4) // if request is complete
 		{
+		reqObId = req.responseText;
+		//alert("response"+reqObId);
 		}
 }
-
-function fun(data)
-{
-	//alert("todisplay"+data);
-	
-	var z = document.getElementById("todisplay"+data);
-	z.style.display = "block";
-	
-	
-	
-	}
-
-function sowat(data,data1)
-{
-	
-	var z = document.getElementById("textarea"+data).value;
-	var z1 = document.getElementById("e"+data);
-	var z2 = document.getElementById("added"+data);
-	z2.style.display = "block";
-	z1.innerHTML = z1.innerHTML + z;
-	var z12 = document.getElementById("todisplay"+data);
-	z12.style.display = "none";
-	myFunction(data,data1,z);
-	
-	}
-
-
 </script>
+<script>
+var p;var date = new Date().toString().slice(0,15);
+
+$(this).on("load",function(e){
+	
+	//alert("loaded");
+	p =$("#sessionId").val();
+	$( "div" ).animate({
+	    left: [ "+=50", "swing" ],
+	    opacity: [ 1, "linear" ]
+	}, 300 );
+	$("img").addClass("img img-circle avatar");
+	$("div:not(.container)").addClass("divClass");
+
+
+$(document).on("click","a",function(){
+	alert($(this).text());
+	$("a").each(function() {
+		
+		  if ($(this).attr('id') == "ajju") {
+			//  alert("u found me...."+req.responseText);
+		    $(this).attr('id',req.responseText);
+		  }
+		});
+	$("button").each(function() {
+		
+		  if ($(this).attr('id') == "ajju") {
+			  alert("u found me...."+req.responseText);
+			  $(this).attr('id',req.responseText);
+		  }
+		});
+	if($(this).text()=="Reply")
+		{
+		alert("yes i m reply");
+		
+var toSeeParent =	$(this).parent("div");
+	toSeeParent.append("<div class='kavya divClass'><textarea rows='5'></textarea><button class='btn btn-info toAccept'>post</button></div>");
+	$("img").addClass("img img-circle avatar");}
+});
+
+
+//alert(date);
+$(document).on("click","button.like",function(){
+	$("a").each(function() {
+		
+		  if ($(this).attr('id') == "ajju") {
+		//	  alert("u found me...."+req.responseText);
+			  $(this).attr('id',req.responseText);
+		  }
+		});
+	$("button").each(function() {
+		
+		  if ($(this).attr('id') == "ajju") {
+			//  alert("u found me...."+req.responseText);
+			  $(this).attr('id',req.responseText);
+		  }
+		});
+	//alert("yes...");
+	var id = $(this).attr("id");
+	var val = $(this).text();
+	var val1 = val.slice(0,2);
+	//alert(val.slice(0,1));
+	if(val.slice(0,1)==" "){		val1 = 0;}
+	$(this).value = "";
+	$(this).text(+(parseInt(val1)+1)+" like ");
+	myLike(id,parseInt(val1));
+	
+	
+	
+});
+$(document).on("click","button.toAccept",function(){
+	$("a").each(function() {
+		
+		  if ($(this).attr('id') == "ajju") {
+			  //alert("u found me...."+req.responseText);
+			  $(this).attr('id',req.responseText);
+		  }
+		});
+	$("button").each(function() {
+		
+		  if ($(this).attr('id') == "ajju") {
+			//  alert("u found me...."+req.responseText);
+			  $(this).attr('id',req.responseText);
+		  }
+		});
+	//alert("i m not here");
+var resp = $(this).parent("div").parent("div");
+
+//alert(resp.find("a").attr("id"));
+var idToSend = resp.find("a").attr("id");
+var desc = resp.find("textarea").val();
+var data = resp.find("a").attr("id");
+var data1 = 3; 
+var classToAdd = "comment";
+ if(resp.find("a").hasClass("cc")&&resp.find("a").attr("id")!=undefined)
+	 {
+	 classToAdd = "disabled123";
+	 data1 = 0;
+	// alert("cc");
+	 }
+if(resp.find("a").hasClass("comment")&&resp.find("a").attr("id")!=undefined)
+{
+	//alert(resp.find("a").attr("id"));
+	data1 = 1;
+	classToAdd = "cc";
+	
+	 }
+//alert(data1+"data1 that i m sendinfg");
+myFunction(data,data1,desc);
+
+
+	
+	resp.find("a").eq(0).after("<div class='divClass'><img src='pic.html?a="+p+"' /><br/><span>You</span> says:<br/><span>"+date+"</span><p>"+resp.find("textarea").val()+"</p><button class='like btn btn-default' id='ajju' > like</button><a class="+classToAdd+" id='ajju'>Reply</a></div>");
+	$("img").addClass("img img-circle avatar");$(this).parent("div:not(.jumbotron)").remove();	
+
+
+});
+
+
+});</script>
 
 
 
@@ -135,6 +266,8 @@ function sowat(data,data1)
 </head>
 <body>
 
+
+<input type="hidden" value="<%=session.getAttribute("pId") %>" id="sessionId" />
 
 
 <%
@@ -151,18 +284,18 @@ if(request.getAttribute("dataToDisplay")!=null){%>
 
 <textarea rows="5"  style="width: 100%;" style="width: 100%;" id="textarea<%=session.getAttribute("pId") %>"></textarea><br/><br/>
 <!-- You 7425 for tym being... -->
-<button type="button" class="btn btn-info" onclick="sowat(<%=session.getAttribute("pId") %>,5);">Post</button>
 
-
+<button class="btn btn-danger toAccept" id="<%=session.getAttribute("pId") %>" >Post</button>
 </div>
+<a></a>
 </div>
 
 <div class="container" style=" max-width: 900px;">
 <div style="border:1px solid #d6d4d7;padding-left:40px;display:none;" id="added<%=session.getAttribute("pId") %>">
-<img src="pic.html?a=<%=session.getAttribute("pId") %>" style="float:right;padding-top:10px" width="60" height="60" class="avatar photo avatar-48"/>
+<img src="pic.html?a=<%=session.getAttribute("pId") %>" />
 
 <span style="text-transform: capitalize;font-family: sans-serif;color:#D9534F;">You</span>&nbspsays:
-<h5><%SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy 'at' h:mm a");
+<h5><%SimpleDateFormat sdf = new SimpleDateFormat("MMM d yyyy 'at' h:mm a");
 Date d = new Date();
 %><%=sdf.format(d) %></h5>
 
@@ -186,7 +319,7 @@ Date d = new Date();
 <div class="well container" style=" max-width: 900px;">
 
 <div style="border:1px solid #d6d4d7;padding-left:40px;">
-<img src="pic.html?a=${entry.postdetails[0]}" style="float:right;padding-right:10px" width="60" height=auto class="avatar photo avatar-48"/>
+<img src="pic.html?a=${entry.postdetails[0]}" style="float:right;"  class="avatar photo"/>
 
 <span style="text-transform: capitalize;font-family: sans-serif;color:#D9534F;">${entry.postdetails[1]}</span>&nbspsays:
 
@@ -195,8 +328,13 @@ Date d = new Date();
 
 
 <p>${entry.postdetails[3]}</p>
+<c:set var="string" value="${entry2}" ></c:set>
+<fmt:parseNumber var="i" integerOnly="true" 
+                       type="number" value="${entry.postdetails[4]}" />
+<button class="like btn btn-default" id="${entry.postdetails[0]}"><c:if test="${i!=0}">${entry.postdetails[4]}</c:if> like
 
-<a class="btn btn-info" class="btn btn-info" href="#${entry.postdetails[0]}" onclick="fun(${entry.postdetails[0]});">Reply</a>
+</button>
+<a id="${entry.postdetails[0]}" class="comment">Reply</a>
 <%-- Status........${status.index} --%>
 
 <c:forEach items="${entry.commentarray}" var="entry2" varStatus="status"> 
@@ -205,10 +343,10 @@ Date d = new Date();
  <c:choose>
  <c:when test="${fn:startsWith(string, '[')}">
 
-<div style="border:1px solid #d6d4d7;padding-left:40px;">
+<div>
 <%k=1; %>
 <%--  ....................... ${entry2[0]}<br/> --%>
-<img src="pic.html?a=${entry2[0]}" style="float:right;padding-right:10px" width="60" height="60" class="avatar photo avatar-48"/>
+<img src="pic.html?a=${entry2[0]}" />
  
  <span style="text-transform: capitalize;font-family: sans-serif;color:#D9534F;">${entry2[1]} </span> says:<br/>
  
@@ -216,7 +354,9 @@ Date d = new Date();
 
 
 <p>${entry2[3]}</p>
-
+<fmt:parseNumber var="i1" integerOnly="true" 
+                       type="number" value="${entry2[4]}" />
+<button class="like btn btn-default" id="${entry2[0]}"><c:if test="${i1!=0}">${entry2[4]}</c:if> like </button>
 </div>
 
 </c:when>
@@ -225,34 +365,20 @@ Date d = new Date();
 
 
 
-<%if(k1 > 4){%> 
-
- <a class="btn btn-info" href="#${p}" onclick="fun(${p});">Reply</a>
-<div style="border:1px solid #d6d4d7;padding-left:40px;display:none;" id="added${p}">
-<img src="pic.html?a=<%=session.getAttribute("pId") %>" style="float:right;padding-top:10px" width="60" height="60" class="avatar photo avatar-48"/>
-
-<span style="text-transform: capitalize;font-family: sans-serif;color:#D9534F;">You </span>says:
-
-<h5><%SimpleDateFormat sdf1 = new SimpleDateFormat("MMM d, yyyy 'at' h:mm a");
-Date d1 = new Date();
-%><%=sdf1.format(d1) %></h5>
-<p id="e${p}"> </div>
-</p>
-<div style="border:1px solid #d6d4d7;padding-left:40px;display:none"; id="todisplay${p}">
-
-<div>
-<textarea rows="5" width=100% style="width: 90%;" id="textarea${p}"></textarea>
+<%if(k1 > 5){%> 
+<fmt:parseNumber var="i3" integerOnly="true" 
+                       type="number" value="${p1}" />
+ <button class="like btn btn-default" id="${p}"><c:if test="${i3!=0}">${p1}</c:if> like </button><a id="${p}" class="cc">Reply</a>
 </div>
-<button type="button" class="btn btn-info" onclick="sowat(${p},1)">Post</button></div>
-</div><% k1 = 1; k=0;}  %>
-<%if(k1==1&&k==0){%><div style="border:1px solid #d6d4d7;padding-left:40px;"><%} %>
+<% k1 = 1; k=0;}  %>
+<%if(k1==1&&k==0){%><div><%} %>
 
 <%if(k1==1){ %>    
 <c:set var="p" value="${entry2}" />
 
 <%} %>
 <%if(k1==2){ %>
-<img src="pic.html?a=${p}" style="float:right;padding-right:10px" width="60" height="60" class="avatar photo avatar-48"/>
+<img src="pic.html?a=${p}"/>
  
 <span style="text-transform: capitalize;font-family: sans-serif;color:#D9534F;">${entry2} </span>says:<br/><%} %>
 <%if(k1==3){ %> 
@@ -262,55 +388,25 @@ Date d1 = new Date();
 <%} %>
 <%if(k1==4){ %> 
 <p>${entry2}</p><%} %>
+<%if(k1==5){ %> 
+<c:set var="p1" value="${entry2}" /><%} %>
 </c:otherwise></c:choose>
 
 <c:if test="${status.last}">
 
-<%if(k1 >=4){%><a href="#${p}" class="btn btn-info" onclick="fun(${p});">Reply</a> 
-<div style="border:1px solid #d6d4d7;padding-left:40px;display:none;" id="added${p}">
-<img src="pic.html?a=<%=session.getAttribute("pId") %>" style="float:right;padding-top:10px" width="60" height="60" class="avatar photo avatar-48"/>
+<%if(k1 >=5){%>
 
-<span style="text-transform: capitalize;font-family: sans-serif;color:#D9534F;">You</span> says:
-<h5><%SimpleDateFormat sdf2 = new SimpleDateFormat("MMM d, yyyy 'at' h:mm a");
-Date d2 = new Date();
-%><%=sdf2.format(d2) %></h5>
 
-<p id="e${p}">  </div>
-</p>
-<div style="border:1px solid #d6d4d7;padding-left:40px;display:none"; id="todisplay${p}">
+<fmt:parseNumber var="i5" integerOnly="true" 
+                       type="number" value="${p1}" />
 
-<div>
-<textarea rows="5" width=100% style="width: 90%;" id="textarea${p}"></textarea>
-</div>
-<button type="button" class="btn btn-info" onclick="sowat(${p},1)">Post</button></div>
+<button class="like btn btn-default" id="${p}"><c:if test="${i5!=0}">${p1}</c:if> like</button> <a id="${p}" class="cc">Reply</a> 
+
 </div><% k1 = 1; k=0;}  %>
 </c:if>
 
  </c:forEach>
-
-<div style="border:1px solid #d6d4d7;padding-left:40px;display:none;" id="added${entry.postdetails[0]}">
-<img src="pic.html?a=${entry.postdetails[0]}" style="float:right;padding-right:10px" width="60" height="60" class="avatar photo avatar-48"/>
-
-<span style="text-transform: capitalize;font-family: sans-serif;color:#D9534F;">You</span> says:
-
-<h5><%SimpleDateFormat sdf4 = new SimpleDateFormat("MMM d, yyyy 'at' h:mm a");
-Date d4 = new Date();
-%><%=sdf4.format(d4) %></h5>
-
-<p id="e${entry.postdetails[0]}"> </div>
-</p>
-<div style="border:1px solid #d6d4d7;padding-left:40px;display:none"; id="todisplay${entry.postdetails[0]}">
-
-<div>
-<textarea rows="5" width=100% style="width: 90%;" id="textarea${entry.postdetails[0]}"></textarea>
 </div>
-<button type="button" class="btn btn-info" onclick="sowat(${entry.postdetails[0]},0)">Post</button></div>
-
-
-
-
-
-
 </div><%k1=0; %></div>
 </c:forEach> 
 <div class="text-center">
@@ -344,6 +440,11 @@ toSendNext.setAttribute("href","hello.html?page="+val);}
 			}
 </script>
 
+
+<script>
+
+
+</script>
 
 </body>
 </html>

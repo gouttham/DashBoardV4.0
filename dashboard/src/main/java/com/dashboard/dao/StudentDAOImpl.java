@@ -47,7 +47,7 @@ public class StudentDAOImpl implements StudentDAO {
 	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 	public ProfileBean getProfileBean(String id){
 		Session session = sessionFactory.getCurrentSession();
-		Query q1 = session.createQuery("from AskBean where postId="+Integer.parseInt(id));
+		Query q1 = session.createQuery("from AskBean where postId='"+id+"'");
 		ArrayList<AskBean> al = new ArrayList<AskBean>();
 		al = (ArrayList<AskBean>) q1.list();
 		Query q = null;
@@ -74,7 +74,7 @@ public class StudentDAOImpl implements StudentDAO {
 	
 		JsonArrayBuilder commentarray = Json.createArrayBuilder();
 		Session s = sessionFactory.getCurrentSession();
-		Query sql = s.createQuery("from AskBean where postId in (select DISTINCT postId from CommentBean where type =0 or type = 3)  order by dateCreated desc");
+		Query sql = s.createQuery("from AskBean where postId in (select DISTINCT postId from CommentBean where type =3)  order by dateCreated desc");
 	//	System.out.println("I m in sorting and these are post id ");
 	
 		sql.setFirstResult((pagenumber-1)*5);
@@ -97,18 +97,20 @@ public class StudentDAOImpl implements StudentDAO {
 		.add(a123.getPostId())
 		.add( a123.getName())
 		.add(dateDt)
-		.add( a123.getDescription()));
-		sql = s.createQuery("from AskBean where postId in (select commentId from CommentBean where postId ='"+a123.getPostId()+"' and commentId !="+ 0+" and type = 0)");
+		.add( a123.getDescription()).add(a123.getNoOfLike()));
+		System.out.println("postid...."+a123.getPostId());
+		sql = s.createQuery("from AskBean where postId in (select commentId from CommentBean where postId ='"+a123.getPostId()+"' and commentId !="+ 0+" and type = 1)");
 		ArrayList<AskBean> aList1233 = (ArrayList<AskBean>) sql.list();
 		for(AskBean ac: aList1233)
 		{//System.out.println("imhere....");
-		Query sql1 = s.createQuery("from AskBean where postId in (select commentId from CommentBean where postId ='"+ac.getPostId()+"' and commentId !="+ 0+" and type = 1)");
+		Query sql1 = s.createQuery("from AskBean where postId in (select commentId from CommentBean where postId ='"+ac.getPostId()+"' and commentId !="+ 0+" and type = 0)");
 		ArrayList<AskBean> acp = (ArrayList<AskBean>) sql1.list();
+		System.out.println("second"+ac.getPostId());
 	 dateDt = sdf.format(ac.getDateCreated());
 		jab.add( ac.getPostId())
 		.add( ac.getName())
 		.add( dateDt)
-		.add( ac.getDescription());
+		.add( ac.getDescription()).add(ac.getNoOfLike());
 
 		for(AskBean acpA : acp )
 		{
@@ -119,7 +121,7 @@ public class StudentDAOImpl implements StudentDAO {
 		.add( acpA.getPostId())
 		.add( acpA.getName())
 		.add(dateDt)
-		.add( acpA.getDescription());
+		.add( acpA.getDescription()).add(acpA.getNoOfLike());
 	
 		
 			jab.add(jabcomm);
@@ -146,7 +148,7 @@ public class StudentDAOImpl implements StudentDAO {
 		Query q = session.createQuery("from ProfileBean where pId='"+askbean.getStudentId()+"'");
 		ProfileBean pb = (ProfileBean) q.list().get(0);
 	    askbean.setName(pb.getName());
-		
+		askbean.setNoOfLike(0);
 		
 		/*SQLQuery query = session.createSQLQuery( "select generatepost.nextval from dual" );
 		int key = ((BigDecimal)query.uniqueResult()).intValue();*/
@@ -169,8 +171,18 @@ public class StudentDAOImpl implements StudentDAO {
 		return askbean;
 	}
 
-
-
+	@Transactional(propagation=Propagation.REQUIRED,readOnly=false)
+public void addLike(AskBean askbean) {
+		
+		
+		Session session = sessionFactory.getCurrentSession();
+		SQLQuery q = session.createSQLQuery("update newdb.db_ask set noOflike= "+askbean.getNoOfLike()+" where postId="+askbean.getPostId());
+		q.executeUpdate();
+		
+		
+		
+		
+	}
 
 	@Transactional(propagation=Propagation.REQUIRED,readOnly=false)
 
@@ -194,7 +206,7 @@ int k = askbean.getPostId();
 		System.out.println(".....postid......."+v);
 		AutoSeqPost asp = new AutoSeqPost();
 		asp.setSeqToPost(v);
-		session.save(asp);
+		session.save(asp);askbean.setNoOfLike(0);
 		askbean.setPostId(v);
 		session.save(askbean);
 		CommentBean cb =new CommentBean();

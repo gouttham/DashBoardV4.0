@@ -46,7 +46,7 @@
 
 <h1>Fill In Your Details</h1>
 	<form:form action="RegistrationForm.html" 
-		modelAttribute="RegistrationFormmodel" method="post">
+		modelAttribute="RegistrationFormmodel" method="post" enctype="multipart/form-data">
 		<table align="center" class="table">
 			<tr>
 				<td><form:input path="name" placeholder="NAME"></form:input></td>
@@ -101,11 +101,11 @@
 			
 			
 			
-			<%-- <tr>
+		<tr>
 				<td>Photo:</td>
-				<td><form:input type="file" path="f" name="file" /></td>
-				<td><form:errors path="f"></form:errors></td>
-			</tr>   --%>
+				<td><input type="file"  name="filename" /></td>
+				<td></td>
+			</tr>   
 			
 		<!-- 	
 			<td><input type="file"  name="file1" /></td>

@@ -2,8 +2,11 @@ package com.dashboard.service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
+import com.dashboard.beans.CredentialBean;
 import com.dashboard.beans.InterviewBean;
 import com.dashboard.beans.IntervieweeBean;
 import com.dashboard.beans.InterviewerBean;
@@ -19,6 +22,21 @@ public interface Administrator {
 //	ArrayList<DoctorBean> suggestDoctors(String patientId, Date date);
 //	Map <PatientBean, AppointmentBean> viewPatientsByDate(Date appointmentDate);
 	
+	////
+	String addTrainer(CredentialBean credentialbean);
+
+	List<ProfileBean> viewTrainer();
+
+	boolean modifyTrainer(ProfileBean profilebean);
+
+	CredentialBean getCredentialBean(String pid);
+
+	int removeTrainer(ArrayList<Integer> trainerIdarr);
+
+	List<ProfileBean> viewStudent();
+	///
+	
+	
 	Map<ProfileBean, ArrayList<StudentSkillBean>> viewAllStudents();
 	Map<ProfileBean, ArrayList<StudentSkillBean>> viewAllTrainers();
 	String iSchedule(String[] interviewer, String[] interviwee, Date iDate);
@@ -33,4 +51,10 @@ ProfileBean getProfileBean(String id);
 	public String addSkill(SkillBean skillBean);
 	public int deleteSkill(int skillId);
 	ArrayList<SkillBean> viewSkills();
+
+	ArrayList<SkillBean> displaySkillList();
+
+	TreeMap<String, Integer> getStudentList(String skills);
+
+	ArrayList<String> getPidList(String[] arr);
 }

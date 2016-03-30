@@ -30,7 +30,7 @@ public interface Student {
 	public int countOfSameAnmts(int anmtId,String studentId);
 	public ArrayList<AnnouncementBean> readAnnouncements(String studentId);
 
-	
+	public void addLike(AskBean askbean);
 	public ArrayList<AnnouncementBean> readAnnouncementsSearch(String studentId,String subject);
 	public ArrayList<AnnouncementBean> viewAnnouncementsSearch(String studentId,String subject);
 	
@@ -39,4 +39,5 @@ public interface Student {
 	public ProfileBean getProfileBean(String id);
 	public AskBean addPost(AskBean askbean);
 	public AskBean addComment(AskBean askbean);
+	
 }
